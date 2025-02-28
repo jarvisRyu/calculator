@@ -26,9 +26,9 @@ class CalculatorAssistant {
                 System.out.println("프로그램을 종료합니다.");
                 System.exit(0);
             }
-            String var3 = scanner.next();
-            if (("+".equals(var3) || "-".equals(var3) || "*".equals(var3) || "/".equals(var3))) {
-                return var3;
+            String var = scanner.next();
+            if (("+".equals(var) || "-".equals(var) || "*".equals(var) || "/".equals(var))) {
+                return var;
             } else {
                 System.out.print("올바른 연산자를 입력하세요:");
             }
@@ -53,7 +53,7 @@ class CalculatorAssistant {
                     if (var3 == 0) {
                         System.out.println("----------------------------------");
                         System.out.println("0으로 나눌수 없습니다.");
-                        return var1/1;
+                        return var1/1; //반복해야되는데 모르겠어서 1로 나눈값을 반환
                     } else {
                         result = var1 / var3;
                         break;
