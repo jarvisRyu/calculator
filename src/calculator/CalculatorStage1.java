@@ -1,6 +1,8 @@
+package calculator;
+
 import java.util.Scanner;
 
-public class Calculator1 {
+public class CalculatorStage1 {
     public static void main(String[] args) {
         System.out.println("Hello, Calculator!");
         loop1:
