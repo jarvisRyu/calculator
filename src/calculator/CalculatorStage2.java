@@ -1,25 +1,37 @@
 package calculator;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.rmi.server.Operation;
 import java.util.Scanner;
 
 public class CalculatorStage2 {
     public static void main(String[] args) {
         System.out.println("Hello, Calculator!");
-//        loop1:
+        System.out.println("Hello, Calculator!");
 //        while (true) {
-        System.out.print("숫자를 입력하세요: //[종료:exit] ");
+        System.out.print("숫자를 입력하세요    [종료:exit] :");
         Scanner scanner = new Scanner(System.in);
         double num1 = CalAssistant.scanChecker(scanner);
-        System.out.println(num1);
 
-        System.out.print("더하기(+),빼기(-),곱하기(*),나누기(/) // [종료:exit] ");
-        String operator = CalAssistant.Operator(scanner);
-        System.out.println(operator);
 
-        System.out.print("계산할 값을 넣으세요: //[종료:exit]");
+    while(true) {
+        System.out.println();
+        System.out.print("{ + , - , * , / } [종료:exit] :");
+        String operator = CalAssistant.operator(scanner);
+        System.out.println();
+        System.out.println("[ " + num1 + " ]" + " (" + operator + ") " + " ???");
+        System.out.println();
+
+
+        System.out.print("계산할 값을 넣으세요 [종료:exit] :");
         double num2 = CalAssistant.scanChecker(scanner);
-        System.out.println(num2);
+        System.out.println();
 
+        double result = CalAssistant.resultCal(num1, operator, num2);
+        num1=result;
+
+    }
 //            if ((num1).equals("exit")) {
 //                break;
 //
@@ -93,7 +105,7 @@ class CalAssistant {
 
 
     //문자열 아닐때
-    public static String Operator(Scanner scanner) {
+    public static String operator(Scanner scanner) {
         while (true) {
             if (scanner.hasNext("exit")) {
                 System.out.println("프로그램을 종료합니다.");
@@ -107,4 +119,32 @@ class CalAssistant {
             }
         }
     }
+
+    public static double resultCal(double var1, String var2, double var3) {
+        double result = 0;
+        switch (var2) {
+            case "+":
+                result = var1 + var3;
+                System.out.printf("%s + %s = %s%n", var1, var3, result);
+                break;
+            case "-":
+                result = var1 - var3;
+                System.out.printf("%s - %s = %s%n", var1, var3, result);
+                break;
+            case "*":
+                result = var1 * var3;
+                System.out.printf("%s * %s = %s%n", var1, var3, result);
+                break;
+            case "/":
+                if (var3 == 0) {
+                    System.out.println("0으로 나눌 수 없습니다.");
+                    break;
+                } else {
+                    result = var1 / var3;
+                    System.out.printf("%s / %s = %s%n", var1, var3, result);
+                    break;
+                }
+        }return result;
+    }
 }
+
