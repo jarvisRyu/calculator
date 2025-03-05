@@ -6,15 +6,26 @@ import java.util.Scanner;
 
 class Calculator {
     private final List<Double> arrayResult = new ArrayList<>();
-    //결과리스트 저장
+
+    //결과값 리스트 저장
     public void setResult(double ret) {
-        this.arrayResult.add(ret);
+        arrayResult.add(ret);
         int maxSize = 10;    //저장리스트 값 10개
         if (arrayResult.size() > maxSize) {
             arrayResult.remove(0);  //저장갯수 초과시 0번째 기록삭제
         }
     }
 
+    //결과리스트 출력
+    void getArrayResult() {
+        System.out.println("==============연산이력==============");
+        for (int i = 0; i < arrayResult.size(); i++) {
+            System.out.println("연산이력 (" + i + ") :" + arrayResult.get(i));
+        }
+        System.out.println("===================================");
+    }
+
+    //reset,ret 키워드 입력확인
     boolean inputKeyword(String operator) {
         if (operator.equals("reset")) {
             arrayResult.clear();
@@ -25,15 +36,6 @@ class Calculator {
             return false;
         }
         return true;
-    }
-
-
-    void getArrayResult() {
-        System.out.println("==============연산이력==============");
-        for (int i = 0; i < arrayResult.size(); i++) {
-            System.out.println("연산이력 (" + i + ") :" + arrayResult.get(i));
-        }
-        System.out.println("===================================");
     }
 
     //숫자 입력확인
@@ -71,7 +73,6 @@ class Calculator {
         }
 
     }
-
 
     //계산하기
     public double calculate(double var1, String var2, double var3) {
