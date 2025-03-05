@@ -26,7 +26,7 @@ public class App {
                 System.out.print("계산할 값을 넣으세요.   :");
                 double num2 = calculatorAssistant.checkInputNumber(scanner);
                 num1 = calculatorAssistant.calculate(num1, operator, num2);
-                Calculator ret = Calculator.setResult(num1);
+                calculatorAssistant.setResult(num1);
 
 
             }

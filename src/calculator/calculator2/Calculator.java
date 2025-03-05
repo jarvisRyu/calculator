@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 class Calculator {
-    private static final List<Double> arrayResult = new ArrayList<>();
+    private final List<Double> arrayResult = new ArrayList<>();
     //결과리스트 저장 . 10개정도
 
-    static Calculator setResult(double ret) {
-        arrayResult.add(ret);
+    public Calculator setResult(double ret) {
+        this.arrayResult.add(ret);
         int maxSize = 10;    //저장리스트 값 10개
         if (arrayResult.size() > maxSize) {
             arrayResult.remove(0);  //저장갯수 초과시 0번째 기록삭제
@@ -17,27 +17,26 @@ class Calculator {
         return null;
     }
 
-        boolean inputKeyword(String operator) {
-            if (operator.equals("reset")) {
-                arrayResult.clear();
-                System.out.println("========값이 초기화 되었습니다.========");
-                return false;
-            }else if (operator.equals("ret")){
-                getArrayResult();
-                return false;
-
-            }return true;
+    boolean inputKeyword(String operator) {
+        if (operator.equals("reset")) {
+            arrayResult.clear();
+            System.out.println("========값이 초기화 되었습니다.========");
+            return false;
+        } else if (operator.equals("ret")) {
+            getArrayResult();
+            return false;
         }
+        return true;
+    }
 
 
-        static void getArrayResult() {
-            System.out.println("==============연산이력==============");
-            for (int i = 0; i < arrayResult.size(); i++) {
-
-                System.out.println("연산이력 (" + i + ") :" + arrayResult.get(i));
-            }
-            System.out.println("===================================");
+     void getArrayResult() {
+        System.out.println("==============연산이력==============");
+        for (int i = 0; i < arrayResult.size(); i++) {
+            System.out.println("연산이력 (" + i + ") :" + arrayResult.get(i));
         }
+        System.out.println("===================================");
+    }
 
     //숫자 입력확인
     public double checkInputNumber(Scanner scanner) {
@@ -102,7 +101,7 @@ class Calculator {
                     }
             }
             System.out.println("=====================계산결과=====================");
-            System.out.printf("👉 %.2f  %s %.2f  = %.2f%n" ,var1, var2, var3, result);
+            System.out.printf("👉 %.2f  %s %.2f  = %.2f%n", var1, var2, var3, result);
             System.out.println("=================================================");
             System.out.println("[종료 : exit] // [초기화 : reset] // [결과보기 : ret]");
             System.out.println();
